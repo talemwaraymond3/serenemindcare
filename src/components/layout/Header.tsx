@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Heart, Phone } from "lucide-react";
+import logo from "@/assets/logo.jpg";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,12 +26,14 @@ const Header = () => {
       <div className="container flex h-20 items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground transition-transform group-hover:scale-105">
-            <Heart className="h-5 w-5" />
-          </div>
+          <img 
+            src={logo} 
+            alt="Serene MindCare Logo" 
+            className="h-14 w-14 rounded-full transition-transform group-hover:scale-105"
+          />
           <div className="flex flex-col">
             <span className="font-heading text-xl font-bold text-foreground">Serene MindCare</span>
-            <span className="text-xs text-muted-foreground">Mental Health for Youth</span>
+            <span className="text-xs text-muted-foreground">Your Mental Health Spot</span>
           </div>
         </Link>
 

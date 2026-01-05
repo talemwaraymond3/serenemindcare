@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Heart, Phone, Mail, MapPin, Twitter, Instagram, Linkedin, Facebook } from "lucide-react";
+import { Phone, Mail, MapPin, Twitter, Instagram, Linkedin, Facebook } from "lucide-react";
+import logo from "@/assets/logo.jpg";
 
 const Footer = () => {
   const quickLinks = [
@@ -26,16 +27,16 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-teal-800 text-teal-100">
+    <footer className="bg-green-800 text-green-100">
       {/* CTA Section */}
-      <div className="border-b border-teal-700/50">
+      <div className="border-b border-green-700/50">
         <div className="container py-12">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
             <div>
-              <h3 className="font-heading text-2xl font-bold text-teal-50 mb-2">
+              <h3 className="font-heading text-2xl font-bold text-green-50 mb-2">
                 You Are Not Alone
               </h3>
-              <p className="text-teal-200">
+              <p className="text-green-200">
                 Free initial assessments available. Someone cares. Help is here.
               </p>
             </div>
@@ -49,7 +50,7 @@ const Footer = () => {
               </a>
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-teal-700 text-teal-50 rounded-xl font-semibold hover:bg-teal-600 transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-700 text-green-50 rounded-xl font-semibold hover:bg-green-600 transition-colors"
               >
                 Get Help Today
               </Link>
@@ -64,12 +65,14 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-3 mb-6">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-600 text-teal-50">
-                <Heart className="h-5 w-5" />
-              </div>
-              <span className="font-heading text-xl font-bold text-teal-50">Serene MindCare</span>
+              <img 
+                src={logo} 
+                alt="Serene MindCare Logo" 
+                className="h-12 w-12 rounded-full bg-white"
+              />
+              <span className="font-heading text-xl font-bold text-green-50">Serene MindCare</span>
             </Link>
-            <p className="text-teal-200 mb-6 leading-relaxed">
+            <p className="text-green-200 mb-6 leading-relaxed">
               Championing mental health for young people across Uganda through accessible, evidence-based care.
             </p>
             <div className="flex gap-3">
@@ -79,7 +82,7 @@ const Footer = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-teal-700/50 hover:bg-teal-600 transition-colors"
+                  className="p-2 rounded-lg bg-green-700/50 hover:bg-green-600 transition-colors"
                   aria-label={social.label}
                 >
                   <social.icon className="h-5 w-5" />
@@ -90,13 +93,13 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-heading font-semibold text-teal-50 mb-4">Quick Links</h4>
+            <h4 className="font-heading font-semibold text-green-50 mb-4">Quick Links</h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="text-teal-200 hover:text-teal-50 transition-colors"
+                    className="text-green-200 hover:text-green-50 transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -107,13 +110,13 @@ const Footer = () => {
 
           {/* Programs */}
           <div>
-            <h4 className="font-heading font-semibold text-teal-50 mb-4">Programs</h4>
+            <h4 className="font-heading font-semibold text-green-50 mb-4">Programs</h4>
             <ul className="space-y-3">
               {programs.map((link) => (
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="text-teal-200 hover:text-teal-50 transition-colors"
+                    className="text-green-200 hover:text-green-50 transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -124,19 +127,19 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="font-heading font-semibold text-teal-50 mb-4">Contact Us</h4>
+            <h4 className="font-heading font-semibold text-green-50 mb-4">Contact Us</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <Phone className="h-5 w-5 text-teal-400 mt-0.5 flex-shrink-0" />
-                <span className="text-teal-200">+256 708-248-371</span>
+                <Phone className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                <span className="text-green-200">+256 708-248-371</span>
               </li>
               <li className="flex items-start gap-3">
-                <Mail className="h-5 w-5 text-teal-400 mt-0.5 flex-shrink-0" />
-                <span className="text-teal-200">serenemindcare5@gmail.com</span>
+                <Mail className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                <span className="text-green-200">serenemindcare5@gmail.com</span>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-teal-400 mt-0.5 flex-shrink-0" />
-                <span className="text-teal-200">Kumwenda-Kitende, Kampala, Uganda</span>
+                <MapPin className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                <span className="text-green-200">Kumwenda-Kitende, Kampala, Uganda</span>
               </li>
             </ul>
           </div>
@@ -144,12 +147,12 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-teal-700/50">
-        <div className="container py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-teal-300">
+      <div className="border-t border-green-700/50">
+        <div className="container py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-green-300">
           <p>© {new Date().getFullYear()} Serene MindCare Network. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link to="/privacy" className="hover:text-teal-50 transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-teal-50 transition-colors">Terms of Service</Link>
+            <Link to="/privacy" className="hover:text-green-50 transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-green-50 transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>
