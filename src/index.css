@@ -131,12 +131,21 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground font-body antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading font-semibold tracking-tight;
+  }
+
+  /* Smooth scroll offset for fixed header */
+  :target {
+    scroll-margin-top: 6rem;
   }
 }
 
