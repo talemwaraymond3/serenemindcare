@@ -19,8 +19,8 @@ const HeroSection = () => {
         style={{ backgroundImage: `url(${heroTeam})` }}
       />
       {/* Gradient Overlay for blend effect */}
-      <div className="absolute inset-0 gradient-hero opacity-85" />
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/70 to-primary/90" />
+      <div className="absolute inset-0 gradient-hero opacity-60" />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-primary/50 to-primary/75" />
       
       {/* Floating Elements */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-teal-300/10 rounded-full blur-3xl animate-float" />
