@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar, Phone, Users, Mic, School, Heart } from "lucide-react";
+import heroTeam from "@/assets/hero-team.png";
 
 const HeroSection = () => {
   const stats = [
@@ -12,9 +13,14 @@ const HeroSection = () => {
 
   return (
     <section className="relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 gradient-hero" />
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')] opacity-50" />
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroTeam})` }}
+      />
+      {/* Gradient Overlay for blend effect */}
+      <div className="absolute inset-0 gradient-hero opacity-85" />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/70 to-primary/90" />
       
       {/* Floating Elements */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-teal-300/10 rounded-full blur-3xl animate-float" />
