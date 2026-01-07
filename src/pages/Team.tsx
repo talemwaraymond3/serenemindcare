@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Award, BookOpen, Mic, Users, Mail, ArrowRight } from "lucide-react";
 import teamPhoto from "@/assets/gallery/team-photo.jpg";
 import teamVisit from "@/assets/gallery/team-visit.jpg";
+import founderJulius from "@/assets/founder-julius.png";
 
 const Team = () => {
   const achievements = [
@@ -83,13 +84,12 @@ const Team = () => {
             <div className="container">
               <div className="grid lg:grid-cols-2 gap-12 items-start">
                 <div>
-                  <div className="aspect-square max-w-md bg-secondary rounded-2xl flex items-center justify-center mb-8">
-                    <div className="text-center">
-                      <div className="w-32 h-32 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                        <span className="font-heading text-4xl font-bold text-primary">KJ</span>
-                      </div>
-                      <p className="text-muted-foreground">Founder Photo</p>
-                    </div>
+                  <div className="aspect-square max-w-md overflow-hidden rounded-2xl shadow-elevated">
+                    <img 
+                      src={founderJulius} 
+                      alt="Kizito Julius - Founder of Serene MindCare" 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
 
