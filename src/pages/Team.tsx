@@ -4,6 +4,8 @@ import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Award, BookOpen, Mic, Users, Mail, ArrowRight } from "lucide-react";
+import teamPhoto from "@/assets/gallery/team-photo.jpg";
+import teamVisit from "@/assets/gallery/team-visit.jpg";
 
 const Team = () => {
   const achievements = [
@@ -150,8 +152,36 @@ const Team = () => {
             </div>
           </section>
 
+          {/* Team Photo Feature */}
+          <section className="py-16 bg-muted/30">
+            <div className="container">
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="relative overflow-hidden rounded-2xl shadow-elevated">
+                  <img 
+                    src={teamPhoto} 
+                    alt="Serene MindCare team members" 
+                    className="w-full h-full object-cover aspect-[4/3]"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+                    <p className="text-white font-medium">Our Core Team</p>
+                  </div>
+                </div>
+                <div className="relative overflow-hidden rounded-2xl shadow-elevated">
+                  <img 
+                    src={teamVisit} 
+                    alt="Serene MindCare team on community visit" 
+                    className="w-full h-full object-cover aspect-[4/3]"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+                    <p className="text-white font-medium">Community Outreach Team</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* Team Roles */}
-          <section className="py-24 bg-muted/30">
+          <section className="py-24">
             <div className="container">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-4">
