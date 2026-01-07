@@ -1,14 +1,16 @@
+import { motion, useInView, Variants } from "framer-motion";
+import { useRef } from "react";
+import { Camera } from "lucide-react";
 import schoolEvent from "@/assets/gallery/school-event.jpg";
 import communityMeeting from "@/assets/gallery/community-meeting.jpg";
 import childrenSession from "@/assets/gallery/children-session.jpg";
 import classroomEngagement from "@/assets/gallery/classroom-engagement.jpg";
 import mentalHealthAwareness from "@/assets/gallery/mental-health-awareness.jpg";
 import youthOutreach from "@/assets/gallery/youth-outreach.jpg";
-import schoolSession from "@/assets/gallery/school-session.jpg";
-import teamVisit from "@/assets/gallery/team-visit.jpg";
 import teamPhoto from "@/assets/gallery/team-photo.jpg";
 import prioritySession from "@/assets/gallery/priority-session.jpg";
-import { Camera } from "lucide-react";
+
+const smoothEase = [0.25, 0.1, 0.25, 1] as const;
 
 const galleryImages = [
   {
@@ -54,46 +56,118 @@ const galleryImages = [
 ];
 
 const GallerySection = () => {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
+
+  const containerVariants: Variants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const headerVariants: Variants = {
+    hidden: { opacity: 0, y: 30, filter: "blur(8px)" },
+    visible: {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: { duration: 0.6, ease: smoothEase },
+    },
+  };
+
+  const imageVariants: Variants = {
+    hidden: { opacity: 0, scale: 0.9, filter: "blur(10px)" },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      filter: "blur(0px)",
+      transition: { duration: 0.6, ease: smoothEase },
+    },
+  };
+
   return (
-    <section className="py-24 bg-muted/30">
+    <section ref={sectionRef} className="py-24 bg-muted/30 overflow-hidden">
       <div className="container">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 mb-4 text-sm font-medium text-primary bg-secondary rounded-full">
+        {/* Section Header */}
+        <motion.div
+          className="text-center max-w-3xl mx-auto mb-16"
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={containerVariants}
+        >
+          <motion.span
+            variants={headerVariants}
+            className="inline-flex items-center gap-2 px-4 py-1.5 mb-4 text-sm font-medium text-primary bg-secondary rounded-full"
+          >
             <Camera className="h-4 w-4" />
             Our Impact in Action
-          </span>
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-4">
+          </motion.span>
+          <motion.h2
+            variants={headerVariants}
+            className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-4"
+          >
             Transforming Lives Across Uganda
-          </h2>
-          <p className="text-lg text-muted-foreground">
+          </motion.h2>
+          <motion.p
+            variants={headerVariants}
+            className="text-lg text-muted-foreground"
+          >
             Witness the real impact of our programs through the communities, schools, and young people we serve.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {/* Gallery Grid */}
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={containerVariants}
+        >
           {galleryImages.map((image, index) => (
-            <div 
+            <motion.div
               key={index}
-              className={`relative group overflow-hidden rounded-2xl shadow-card hover:shadow-elevated transition-all duration-300 ${
+              variants={imageVariants}
+              whileHover={{
+                scale: 1.02,
+                zIndex: 10,
+                transition: { duration: 0.3, ease: smoothEase },
+              }}
+              className={`relative group overflow-hidden rounded-2xl shadow-card cursor-pointer ${
                 index === 0 ? "col-span-2 row-span-2" : ""
               }`}
             >
-              <img 
-                src={image.src} 
+              <motion.img
+                src={image.src}
                 alt={image.alt}
-                className="w-full h-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover aspect-square"
                 loading="lazy"
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.5 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-0 left-0 right-0 p-4">
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              >
+                <motion.div
+                  className="absolute bottom-0 left-0 right-0 p-4"
+                  initial={{ y: 20, opacity: 0 }}
+                  whileHover={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.3, delay: 0.1 }}
+                >
                   <p className="text-white font-medium text-sm sm:text-base">
                     {image.caption}
                   </p>
-                </div>
-              </div>
-            </div>
+                </motion.div>
+              </motion.div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
