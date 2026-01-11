@@ -19,7 +19,8 @@ const Index = () => {
           content="Serene MindCare champions mental health for children, adolescents, and youth across Uganda through accessible, evidence-based psychotherapy, school programs, and community support."
         />
         <meta name="keywords" content="mental health Uganda, youth mental health, child therapy Uganda, adolescent counseling, Serene MindCare, school mental health programs" />
-        <link rel="canonical" href="https://serenemindcare.org" />
+        <link rel="canonical" href="https://www.serenemindcare.com" />
+        <meta property="og:url" content="https://www.serenemindcare.com" />
       </Helmet>
 
       <div className="min-h-screen flex flex-col">
