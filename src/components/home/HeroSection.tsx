@@ -54,22 +54,16 @@ const HeroSection = () => {
 
   return (
     <section ref={containerRef} className="relative overflow-hidden min-h-screen flex items-center">
-      {/* Background Image with Parallax */}
-      <motion.div
+      {/* Background Image - Clear, no fading */}
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ 
           backgroundImage: `url(${heroTeam})`,
-          y: backgroundY,
-          scale: 1.1,
         }}
       />
       
-      {/* Gradient Overlay */}
-      <motion.div 
-        className="absolute inset-0 gradient-hero opacity-60" 
-        style={{ opacity }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-primary/50 to-primary/75" />
+      {/* Gradient Overlay - Static */}
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/30 via-primary/40 to-primary/70" />
 
       {/* Floating Elements with enhanced animation */}
       <motion.div

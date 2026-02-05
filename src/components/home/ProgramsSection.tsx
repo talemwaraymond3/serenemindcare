@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, School, Mic, Stethoscope, BookOpen } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { motion, useInView, Variants } from "framer-motion";
 import { useRef } from "react";
+import classroomEngagement from "@/assets/gallery/classroom-engagement.jpg";
+import communityMeeting from "@/assets/gallery/community-meeting.jpg";
+import mentalHealthAwareness from "@/assets/gallery/mental-health-awareness.jpg";
 
 const smoothEase = [0.25, 0.1, 0.25, 1] as const;
 
@@ -12,40 +15,28 @@ const ProgramsSection = () => {
 
   const programs = [
     {
-      icon: School,
+      image: classroomEngagement,
       title: "Serene Minds Thrive",
       tag: "Flagship Program",
       description: "Transforming Ugandan schools (P4-S6) into mental health safe spaces for ages 7-20. Includes Buddy 2 Buddy, Brain 2 Brain, and Balance 2 Balance modules.",
       features: ["Student wellness workshops", "Teacher training", "Parent engagement", "Peer mentor clubs"],
       link: "/services#smt",
-      color: "bg-primary",
     },
     {
-      icon: Mic,
+      image: communityMeeting,
       title: "Mental Health Spot",
       tag: "Weekly X Spaces",
       description: "Every Tuesday 8PM EAT — creating stigma-free conversations about mental health for young people. 200+ discussions hosted with 150+ expert speakers.",
       features: ["Live Q&A sessions", "Expert speakers", "Recorded archives", "Global reach"],
       link: "/services#mental-health-spot",
-      color: "bg-accent",
     },
     {
-      icon: Stethoscope,
-      title: "Clinical Services",
-      tag: "Treatment & Rehabilitation",
-      description: "Individual, group, family, and residential support for ages 7-24. Evidence-based psychotherapy, crisis intervention, and recovery pathways.",
-      features: ["CBT & DBT therapy", "Play therapy (ages 7-12)", "Family therapy", "Crisis intervention"],
-      link: "/services#clinical",
-      color: "bg-teal-600",
-    },
-    {
-      icon: BookOpen,
+      image: mentalHealthAwareness,
       title: "Key Publications",
       tag: "Educational Resources",
       description: "Evidence-based mental health books powering our school programs: Buddy 2 Buddy, Brain 2 Brain, and Balance 2 Balance workbooks.",
       features: ["Anti-bullying prevention", "Substance resistance", "Stress regulation", "Free resources"],
       link: "/resources",
-      color: "bg-teal-400",
     },
   ];
 
@@ -147,23 +138,24 @@ const ProgramsSection = () => {
                 to={program.link}
                 className="group block p-8 bg-card rounded-2xl border border-border shadow-card hover:shadow-elevated transition-shadow duration-300"
               >
-                <div className="flex items-start gap-4 mb-6">
-                  <motion.div
-                    className={`flex items-center justify-center w-14 h-14 ${program.color} text-primary-foreground rounded-xl shadow-soft`}
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <program.icon className="h-7 w-7" />
-                  </motion.div>
-                  <div>
-                    <span className="inline-block px-2 py-0.5 mb-1 text-xs font-medium text-primary bg-secondary rounded">
+                {/* Program Image */}
+                <div className="relative h-48 -mx-8 -mt-8 mb-6 overflow-hidden rounded-t-2xl">
+                  <img
+                    src={program.image}
+                    alt={program.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
+                  <div className="absolute bottom-4 left-4">
+                    <span className="inline-block px-3 py-1 text-xs font-medium text-primary-foreground bg-primary rounded-full">
                       {program.tag}
                     </span>
-                    <h3 className="font-heading text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
-                      {program.title}
-                    </h3>
                   </div>
                 </div>
+                
+                <h3 className="font-heading text-xl font-semibold text-foreground group-hover:text-primary transition-colors mb-3">
+                  {program.title}
+                </h3>
 
                 <p className="text-muted-foreground mb-6 leading-relaxed">
                   {program.description}
