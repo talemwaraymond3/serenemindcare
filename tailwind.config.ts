@@ -63,23 +63,15 @@ export default {
           800: "hsl(var(--green-800))",
           900: "hsl(var(--green-900))",
         },
-        purple: {
-          50: "hsl(var(--purple-50))",
-          100: "hsl(var(--purple-100))",
-          200: "hsl(var(--purple-200))",
-          300: "hsl(var(--purple-300))",
-          400: "hsl(var(--purple-400))",
-          500: "hsl(var(--purple-500))",
-        },
-        warm: {
-          50: "hsl(var(--warm-50))",
-          100: "hsl(var(--warm-100))",
-          200: "hsl(var(--warm-200))",
-        },
-        sage: {
-          50: "hsl(var(--sage-50))",
-          100: "hsl(var(--sage-100))",
-          200: "hsl(var(--sage-200))",
+        gray: {
+          50: "hsl(var(--gray-50))",
+          100: "hsl(var(--gray-100))",
+          200: "hsl(var(--gray-200))",
+          300: "hsl(var(--gray-300))",
+          400: "hsl(var(--gray-400))",
+          500: "hsl(var(--gray-500))",
+          600: "hsl(var(--gray-600))",
+          700: "hsl(var(--gray-700))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
