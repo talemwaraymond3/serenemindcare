@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Phone, Mail, MapPin, Clock, Send, Twitter, Instagram, Linkedin, Facebook } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -39,13 +40,30 @@ const Contact = () => {
 
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Message sent successfully!",
-      description: "We'll get back to you within 24 hours. For emergencies, please call us directly.",
-    });
+    try {
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          name: formData.name,
+          contact: formData.contact,
+          helpType: formData.helpType,
+          message: formData.message,
+        },
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Message sent successfully!",
+        description: "We'll get back to you within 24 hours. For emergencies, please call us directly.",
+      });
+    } catch (error) {
+      console.error('Email send error:', error);
+      toast({
+        title: "Failed to send message",
+        description: "Please try again or contact us directly by phone.",
+        variant: "destructive",
+      });
+    }
     
     setFormData({ name: "", contact: "", helpType: "", message: "" });
     setIsSubmitting(false);
