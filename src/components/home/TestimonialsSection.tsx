@@ -11,8 +11,8 @@ const TestimonialsSection = () => {
   const testimonials = [
     {
       quote: "Our school's suicide ideation dropped 28% after implementing Serene Minds Thrive modules. Attendance improved significantly.",
-      author: "Headteacher Sarah N.",
-      role: "Kampala Secondary School",
+      author: "Teacher Grace M.",
+      role: "Secondary School Educator",
       rating: 5,
     },
     {
