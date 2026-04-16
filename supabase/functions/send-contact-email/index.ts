@@ -78,8 +78,9 @@ Deno.serve(async (req) => {
         'Authorization': `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'Serene MindCare <onboarding@resend.dev>',
-        to: ['serenemindcare5@gmail.com'],
+        from: 'Serene MindCare <info@serenemindcare.com>',
+        to: ['info@serenemindcare.com'],
+        reply_to: contact.includes('@') ? contact : undefined,
         subject: `New Contact: ${helpLabels[helpType] || helpType} - ${name}`,
         html,
       }),
