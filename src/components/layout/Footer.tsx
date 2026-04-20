@@ -1,8 +1,9 @@
+import { forwardRef } from "react";
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Twitter, Instagram, Linkedin, Facebook } from "lucide-react";
 import logo from "@/assets/logo.jpg";
 
-const Footer = () => {
+const Footer = forwardRef<HTMLElement>((_, ref) => {
   const quickLinks = [
     { path: "/about", label: "About Us" },
     { path: "/services", label: "Services" },
@@ -27,8 +28,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-green-800 text-green-100">
-      {/* CTA Section */}
+    <footer ref={ref} className="bg-green-800 text-green-100">
       <div className="border-b border-green-700/50">
         <div className="container py-12">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
@@ -59,15 +59,13 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Main Footer */}
       <div className="container py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-3 mb-6">
-              <img 
-                src={logo} 
-                alt="Serene MindCare Logo" 
+              <img
+                src={logo}
+                alt="Serene MindCare Logo"
                 className="h-12 w-12 rounded-full bg-white"
               />
               <span className="font-heading text-xl font-bold text-green-50">Serene MindCare</span>
@@ -91,16 +89,12 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h4 className="font-heading font-semibold text-green-50 mb-4">Quick Links</h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className="text-green-200 hover:text-green-50 transition-colors"
-                  >
+                  <Link to={link.path} className="text-green-200 hover:text-green-50 transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -108,16 +102,12 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Programs */}
           <div>
             <h4 className="font-heading font-semibold text-green-50 mb-4">Programs</h4>
             <ul className="space-y-3">
               {programs.map((link) => (
                 <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className="text-green-200 hover:text-green-50 transition-colors"
-                  >
+                  <Link to={link.path} className="text-green-200 hover:text-green-50 transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -125,7 +115,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
             <h4 className="font-heading font-semibold text-green-50 mb-4">Contact Us</h4>
             <ul className="space-y-4">
@@ -146,7 +135,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Bar */}
       <div className="border-t border-green-700/50">
         <div className="container py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-green-300">
           <p>© {new Date().getFullYear()} Serene MindCare Network. All rights reserved.</p>
@@ -158,6 +146,8 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+});
+
+Footer.displayName = "Footer";
 
 export default Footer;
